@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ L('Contact Us', 'Hubungi Kami') }}{% endblock %}
-{% block desc %}{{ L('Tell BMS what you need or what you have. The enquiry form opens WhatsApp with your details ready to send.', 'Beri tahu BMS apa yang Anda butuhkan atau miliki. Formulir ini membuka WhatsApp dengan detail Anda siap dikirim.') }}{% endblock %}
+{% block desc %}{{ L('Tell BMS what you need or what you can supply. The enquiry form opens WhatsApp with your details ready to send.', 'Beri tahu BMS apa yang Anda butuhkan atau bisa pasok. Formulir ini membuka WhatsApp dengan detail Anda siap dikirim.') }}{% endblock %}
 {% block main %}
 <section class="head head-maize">
   <div class="wrap">
     <p class="eyebrow">{{ L('Contact', 'Kontak') }}</p>
-    <h1>{{ L('Tell us what you need, or what you have.', 'Beri tahu kami apa yang Anda butuhkan, atau miliki.') }}</h1>
+    <h1>{{ L('Tell us what you need, or what you can supply.', 'Beri tahu kami apa yang Anda butuhkan, atau bisa pasok.') }}</h1>
     <p class="lead">{{ L('One short form. It opens WhatsApp with your details ready to send to our team.', 'Satu formulir singkat. Formulir ini membuka WhatsApp dengan detail Anda siap dikirim ke tim kami.') }}</p>
   </div>
 </section>
@@ -18,10 +18,10 @@
           <legend>{{ L('I am a', 'Saya adalah') }} <span class="req" aria-hidden="true">*</span></legend>
           <div class="seg">
             <label><input type="radio" name="role" value="need" required><span class="seg-box"><b>{{ L('BUYER', 'PEMBELI') }}</b></span></label>
-            <label class="have"><input type="radio" name="role" value="have"><span class="seg-box"><b>{{ L('SELLER', 'PENJUAL') }}</b></span></label>
+            <label class="have"><input type="radio" name="role" value="have"><span class="seg-box"><b>{{ L('SUPPLIER', 'PEMASOK') }}</b></span></label>
           </div>
         </fieldset>
-        <p class="err">{{ L('Please choose buyer or seller.', 'Pilih pembeli atau penjual.') }}</p>
+        <p class="err">{{ L('Please choose buyer or supplier.', 'Pilih pembeli atau pemasok.') }}</p>
       </div>
 
       <div class="field">

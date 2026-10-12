@@ -1,8 +1,8 @@
-{# BUY / SELL pair (catalogue + material pages). BUY = buyer, SELL = seller. Links carry ?intent=&material= into the contact form. #}
+{# BUY / SUPPLY pair (catalogue + material pages). BUY = buyer orders from BMS, SUPPLY = supplier supplies to BMS. Links carry ?intent=&material= into the contact form. #}
 {% macro pair(slug='', big=False) %}
 <div class="pair">
-  <a class="btn btn-forest btn-need{% if big %} btn-lg{% endif %}" href="{{ url('contact') }}?intent=need{% if slug %}&amp;material={{ slug }}{% endif %}" aria-label="{{ L('Buy (buyer)', 'Beli (pembeli)') }}">{{ L('BUY', 'BELI') }}</a>
-  <a class="btn btn-gold{% if big %} btn-lg{% endif %}" href="{{ url('contact') }}?intent=have{% if slug %}&amp;material={{ slug }}{% endif %}" aria-label="{{ L('Sell (seller)', 'Jual (penjual)') }}">{{ L('SELL', 'JUAL') }}</a>
+  <a class="btn btn-forest btn-need{% if big %} btn-lg{% endif %}" href="{{ url('contact') }}?intent=need{% if slug %}&amp;material={{ slug }}{% endif %}" aria-label="{{ L('Buy from BMS (buyer)', 'Beli dari BMS (pembeli)') }}">{{ L('BUY', 'BELI') }}</a>
+  <a class="btn btn-gold{% if big %} btn-lg{% endif %}" href="{{ url('contact') }}?intent=have{% if slug %}&amp;material={{ slug }}{% endif %}" aria-label="{{ L('Supply to BMS (supplier)', 'Pasok ke BMS (pemasok)') }}">{{ L('SUPPLY', 'PASOK') }}</a>
 </div>
 {% endmacro %}
 

@@ -44,9 +44,9 @@
   if (!form) { return; }
 
   var TXT = {
-    en: { head: 'New enquiry', need: 'BUYER', have: 'SELLER', material: 'Material', qty: 'Quantity',
+    en: { head: 'New enquiry', need: 'BUYER', have: 'SUPPLIER', material: 'Material', qty: 'Quantity',
           loc: 'Location', notes: 'Notes', name: 'Name', company: 'Company', phone: 'WhatsApp', foot: 'Sent from the BMS website', tbd: 'unit to be discussed' },
-    id: { head: 'Permintaan baru', need: 'PEMBELI', have: 'PENJUAL', material: 'Material', qty: 'Jumlah',
+    id: { head: 'Permintaan baru', need: 'PEMBELI', have: 'PEMASOK', material: 'Material', qty: 'Jumlah',
           loc: 'Lokasi', notes: 'Catatan', name: 'Nama', company: 'Perusahaan', phone: 'WhatsApp', foot: 'Dikirim dari situs BMS', tbd: 'satuan dibahas nanti' }
   };
   var T = TXT[form.getAttribute('data-lang')] || TXT.en;
@@ -54,7 +54,7 @@
   var el = function (n) { return form.elements[n]; };
   var role = function () { var r = form.querySelector('input[name=role]:checked'); return r ? r.value : ''; };
 
-  // Labels that change with the role (buyer vs seller)
+  // Labels that change with the role (buyer vs supplier)
   var swap = function () {
     var r = role() || 'need';
     form.querySelectorAll('label[data-need]').forEach(function (l) {

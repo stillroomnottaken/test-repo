@@ -165,18 +165,16 @@ img{max-width:100%;height:auto}
 @media(max-width:760px){.steps{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.steps{grid-template-columns:1fr}}
 
-/* network flow */
-.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch}
-.flow-col{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column}
-.flow-col h3{font:600 .76rem ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8em}
-.flow-col li{padding:7px 0;border-top:1px solid var(--line)}
-.flow-col .btn{margin-top:auto;align-self:flex-start}
-.flow-col ul{margin-bottom:16px}
-.flow-core{background:var(--forest);border-color:var(--forest);color:var(--paper)}
-.flow-core h3{color:var(--gold)}
-.flow-core li{border-color:rgba(251,247,230,.25)}
-.flow-arrow{align-self:center;color:var(--gold);font-size:1.6rem}
-@media(max-width:860px){.flow{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg);justify-self:center;line-height:1}}
+/* three-step flow: Supplier -> BMS -> Business opportunity */
+.bigflow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:20px;align-items:stretch}
+.bf-step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:44px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px}
+.bf-ico{width:clamp(72px,9vw,104px);height:auto;fill:none;stroke:var(--forest);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.bf-t{margin:0;font:600 clamp(1.7rem,3.6vw,2.6rem)/1.1 var(--serif);color:var(--deep);letter-spacing:-.01em}
+.bf-core{background:var(--forest);border-color:var(--forest)}
+.bf-core .bf-ico{stroke:var(--gold)}
+.bf-core .bf-t{color:var(--paper)}
+.bf-arrow{align-self:center;color:var(--gold);font-size:clamp(2rem,4vw,3rem);line-height:1}
+@media(max-width:860px){.bigflow{grid-template-columns:1fr}.bf-step{padding:32px 20px}.bf-arrow{transform:rotate(90deg);justify-self:center}}
 
 /* facts */
 .facts{margin:0}

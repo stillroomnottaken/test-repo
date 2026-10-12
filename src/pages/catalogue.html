@@ -2,13 +2,13 @@
 {% from "partials/macros.html" import pair, cta with context %}
 {% set cats = {'agri': L('Agricultural commodities', 'Komoditas pertanian'), 'bio': L('Bio-based materials', 'Bahan berbasis hayati'), 'industrial': L('Industrial', 'Industri')} %}
 {% block title %}{{ L('Materials Catalogue', 'Katalog Material') }}{% endblock %}
-{% block desc %}{{ L('Agricultural commodities, bio-based and industrial materials. Contact BMS to buy or sell.', 'Komoditas pertanian, bahan berbasis hayati, dan material industri. Hubungi BMS untuk membeli atau menjual.') }}{% endblock %}
+{% block desc %}{{ L('Agricultural commodities, bio-based and industrial materials. Contact BMS to order or to supply.', 'Komoditas pertanian, bahan berbasis hayati, dan material industri. Hubungi BMS untuk memesan atau memasok.') }}{% endblock %}
 {% block main %}
 <section class="head head-gold">
   <div class="wrap">
     <p class="eyebrow">{{ L('Catalogue', 'Katalog') }}</p>
     <h1>{{ L('Materials Catalogue', 'Katalog Material') }}</h1>
-    <p class="lead">{{ L('Agricultural commodities and materials we trade. Buying or selling, start here.', 'Komoditas dan material pertanian yang kami perdagangkan. Mau membeli atau menjual, mulai dari sini.') }}</p>
+    <p class="lead">{{ L('Agricultural commodities and materials we supply. Need a material, or can you supply one? Start here.', 'Komoditas dan material pertanian yang kami pasok. Butuh material, atau bisa memasok? Mulai dari sini.') }}</p>
   </div>
 </section>
 
@@ -37,7 +37,7 @@
       <article class="mat mat-more">
         <div class="mat-body">
           <h3>{{ L('Not listed?', 'Tidak ada di daftar?') }}</h3>
-          <p>{{ L('Other relevant industrial materials are welcome. Tell us what you need or have.', 'Material industri lain yang relevan juga kami terima. Beri tahu kami apa yang Anda butuhkan atau miliki.') }}</p>
+          <p>{{ L('Other relevant industrial materials are welcome. Tell us what you need or can supply.', 'Material industri lain yang relevan juga kami terima. Beri tahu kami apa yang Anda butuhkan atau bisa pasok.') }}</p>
           <div class="mat-cta">
             <small>{{ L('Contact us about this', 'Hubungi kami tentang ini') }}</small>
             {{ pair('other') }}

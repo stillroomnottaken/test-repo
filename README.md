@@ -14,7 +14,7 @@ Upload the contents of `dist/` to any static host. Everything in `dist/` is gene
 | SEO | One URL to rank | A URL per topic (Catalogue, Produk Olahan, ...), each with its own title and description |
 | Cost | Cheapest to edit | Header, menu and footer live once in `src/base.html`, so the cost is near zero |
 
-Why multi-page wins here: the founders want less scroll, the business has two audiences (buyers and sellers)
+Why multi-page wins here: the founders want less scroll, the business has two audiences (buyers, and suppliers who supply to BMS)
 and several distinct topics. Multi-page also lets Indonesian visitors land on a page called "Produk Olahan"
 or "Katalog" straight from search.
 
@@ -25,7 +25,7 @@ or "Katalog" straight from search.
 | Home / Beranda | `index.html` | Hero + four colour ribbons + closing CTA |
 | Catalogue / Katalog | `catalogue.html` / `katalog.html` | Materials with **I need this / I have this** |
 | Processed Products / Produk Olahan | `products.html` / `produk-olahan.html` | What corn cobs become and where they fit |
-| How We Work / Cara Kerja | `how-we-work.html` / `cara-kerja.html` | Network diagram + 4-step process |
+| How We Work / Cara Kerja | `how-we-work.html` / `cara-kerja.html` | Three big blocks: Supplier → BMS → Business opportunity |
 | About / Tentang Kami | `about.html` / `tentang.html` | Company facts, markets |
 | Contact / Hubungi Kami | `contact.html` / `kontak.html` | Structured inquiry form → WhatsApp |
 | (detail) | `corn-cobs.html` | Only materials with real content get a page |
