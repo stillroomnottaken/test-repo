@@ -1,0 +1,20 @@
+{
+  "name": "PT Berkat Muri Sejahtera",
+  "short": "BMS",
+  "nib": "0807240054536",
+  "base_url": "",
+  "whatsapp": "6281289090842",
+  "contacts": [
+    { "name": "Kris Dwi Atmaja",   "display": "0812-8909-0842", "e164": "6281289090842" },
+    { "name": "Kristian Febrianta", "display": "0817-8819-4848", "e164": "6281788194848" }
+  ],
+  "social": { "instagram": "", "linkedin": "", "facebook": "" },
+  "pages": {
+    "home":      { "en": "index",        "id": "index" },
+    "catalogue": { "en": "catalogue",    "id": "katalog" },
+    "products":  { "en": "products",     "id": "produk-olahan" },
+    "process":   { "en": "how-we-work",  "id": "cara-kerja" },
+    "about":     { "en": "about",        "id": "tentang" },
+    "contact":   { "en": "contact",      "id": "kontak" }
+  }
+}

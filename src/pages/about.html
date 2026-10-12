@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import pair, cta with context %}
+{% block title %}{{ L('About', 'Tentang Kami') }}{% endblock %}
+{% block desc %}{{ L('PT Berkat Muri Sejahtera is an Indonesian trading company established in 2025 and based in Jakarta, focused on sourcing, aggregation and distribution.', 'PT Berkat Muri Sejahtera adalah perusahaan perdagangan Indonesia yang didirikan pada 2025 dan berbasis di Jakarta, berfokus pada pengadaan, agregasi, dan distribusi.') }}{% endblock %}
+{% block main %}
+<section class="head head-maize">
+  <div class="wrap">
+    <p class="eyebrow">{{ L('About', 'Tentang Kami') }}</p>
+    <h1>{{ site.name }}</h1>
+    <p class="lead">{{ L('An Indonesian trading company established in 2025 and based in Jakarta, focused on sourcing, aggregation and distribution.', 'Perusahaan perdagangan Indonesia yang didirikan pada 2025 dan berbasis di Jakarta, berfokus pada pengadaan, agregasi, dan distribusi.') }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap about-grid">
+    <div>
+      <h2>{{ L('Growing step by step', 'Bertumbuh selangkah demi selangkah') }}</h2>
+      <p>{{ L('BMS is building a growing network of farmers, suppliers and buyers across Indonesia and developing toward Asia-Pacific and international opportunities.', 'BMS membangun jaringan petani, pemasok, dan pembeli yang terus berkembang di seluruh Indonesia dan bergerak menuju peluang Asia-Pasifik dan internasional.') }}</p>
+      <ol class="steps" style="--n:3">
+        <li><b>Indonesia</b><span>{{ L('Home network', 'Jaringan utama') }}</span></li>
+        <li><b>Asia-Pacific</b><span>{{ L('Developing', 'Berkembang') }}</span></li>
+        <li><b>{{ L('International', 'Internasional') }}</b><span>{{ L('Growth ahead', 'Pertumbuhan ke depan') }}</span></li>
+      </ol>
+    </div>
+    <dl class="facts">
+      <div><dt>{{ L('Company', 'Perusahaan') }}</dt><dd>{{ site.name }}</dd></div>
+      <div><dt>{{ L('Type', 'Jenis') }}</dt><dd>{{ L('Indonesian trading company', 'Perusahaan perdagangan Indonesia') }}</dd></div>
+      <div><dt>{{ L('Established', 'Berdiri') }}</dt><dd>2025</dd></div>
+      <div><dt>{{ L('Based in', 'Berkedudukan di') }}</dt><dd>Jakarta, Indonesia</dd></div>
+      <div><dt>{{ L('Focus', 'Fokus') }}</dt><dd>{{ L('Sourcing, aggregation, distribution', 'Pengadaan, agregasi, distribusi') }}</dd></div>
+      <div><dt>NIB</dt><dd>{{ site.nib }}</dd></div>
+    </dl>
+  </div>
+</section>
+{{ cta(L("What's moving through your network?", 'Apa yang bergerak di jaringan Anda?'), L('Whether you have resources to offer or a material requirement to fulfil, BMS can help explore the connection.', 'Baik Anda memiliki sumber daya untuk ditawarkan maupun kebutuhan material yang harus dipenuhi, BMS dapat membantu menjajaki koneksinya.')) }}
+{% endblock %}

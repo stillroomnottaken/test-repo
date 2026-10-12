@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import contact_btn with context %}
+{% block title %}{{ L('How We Work', 'Cara Kerja') }}{% endblock %}
+{% block desc %}{{ L('BMS sits between those who hold resources and those who need them, coordinating sourcing, processing and logistics.', 'BMS berada di antara pihak yang memiliki sumber daya dan pihak yang membutuhkannya, mengoordinasikan pengadaan, pengolahan, dan logistik.') }}{% endblock %}
+{% block main %}
+<section class="head head-forest">
+  <div class="wrap">
+    <p class="eyebrow">{{ L('How We Work', 'Cara Kerja') }}</p>
+    <h1>{{ L('One network. Multiple opportunities.', 'Satu jaringan. Banyak peluang.') }}</h1>
+    <p class="lead">{{ L('BMS sits between those who hold resources and those who need them, coordinating the steps in between.', 'BMS berada di antara pihak yang memiliki sumber daya dan pihak yang membutuhkannya, mengoordinasikan setiap langkah di antaranya.') }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap flow">
+    <div class="flow-col">
+      <h3>{{ L('Resource sources', 'Sumber sumber daya') }}</h3>
+      <ul>
+        <li>{{ L('Farms', 'Lahan pertanian') }}</li><li>{{ L('Collectors', 'Pengepul') }}</li><li>{{ L('Plantations', 'Perkebunan') }}</li><li>{{ L('Suppliers', 'Pemasok') }}</li><li>{{ L('Agricultural businesses', 'Usaha pertanian') }}</li>
+      </ul>
+    </div>
+    <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+    <div class="flow-col flow-core">
+      <h3>BMS</h3>
+      <ul>
+        <li>{{ L('Sourcing', 'Pengadaan') }}</li><li>{{ L('Aggregation', 'Agregasi') }}</li><li>{{ L('Coordination', 'Koordinasi') }}</li><li>{{ L('Processing to needs', 'Pengolahan sesuai kebutuhan') }}</li><li>{{ L('Logistics coordination', 'Koordinasi logistik') }}</li>
+      </ul>
+    </div>
+    <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+    <div class="flow-col">
+      <h3>{{ L('Business opportunities', 'Peluang bisnis') }}</h3>
+      <ul>
+        <li>{{ L('Manufacturers', 'Produsen') }}</li><li>{{ L('Processors', 'Pengolah') }}</li><li>{{ L('Distributors', 'Distributor') }}</li><li>{{ L('Industrial buyers', 'Pembeli industri') }}</li><li>{{ L('Cosmetic & personal care companies', 'Perusahaan kosmetik & perawatan diri') }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap" style="text-align:center">{{ contact_btn('', 'btn-forest btn-lg') }}</div>
+</section>
+{% endblock %}

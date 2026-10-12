@@ -1,0 +1,93 @@
+[
+ {
+  "slug": "cocoa",
+  "cat": "agri",
+  "image": "",
+  "name": {
+   "en": "Cocoa",
+   "id": "Kakao"
+  }
+ },
+ {
+  "slug": "candlenuts",
+  "cat": "agri",
+  "image": "",
+  "name": {
+   "en": "Candlenuts",
+   "id": "Kemiri"
+  }
+ },
+ {
+  "slug": "corn-cobs",
+  "cat": "agri",
+  "detail": true,
+  "image": "",
+  "name": {
+   "en": "Corn Cobs",
+   "id": "Tongkol Jagung"
+  }
+ },
+ {
+  "slug": "rubber-seeds",
+  "cat": "agri",
+  "image": "",
+  "name": {
+   "en": "Rubber Seeds",
+   "id": "Biji Karet"
+  }
+ },
+ {
+  "slug": "rubber-seed-oil",
+  "cat": "bio",
+  "image": "",
+  "name": {
+   "en": "Rubber Seed Oil",
+   "id": "Minyak Biji Karet"
+  }
+ },
+ {
+  "slug": "palm-based-derivatives",
+  "cat": "bio",
+  "image": "",
+  "name": {
+   "en": "Palm-Based Derivatives",
+   "id": "Turunan Kelapa Sawit"
+  }
+ },
+ {
+  "slug": "cnsl",
+  "cat": "bio",
+  "image": "",
+  "name": {
+   "en": "CNSL",
+   "id": "CNSL"
+  }
+ },
+ {
+  "slug": "uco",
+  "cat": "bio",
+  "image": "",
+  "name": {
+   "en": "UCO",
+   "id": "UCO"
+  }
+ },
+ {
+  "slug": "pome",
+  "cat": "bio",
+  "image": "",
+  "name": {
+   "en": "POME",
+   "id": "POME"
+  }
+ },
+ {
+  "slug": "petrochemicals",
+  "cat": "industrial",
+  "image": "",
+  "name": {
+   "en": "Petrochemicals",
+   "id": "Petrokimia"
+  }
+ }
+]

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | PT Berkat Muri Sejahtera (BMS)</title>
+  <meta name="description" content="Tell BMS what you need or what you have. The enquiry form opens WhatsApp with your details ready to send.">
+  <meta name="theme-color" content="#43592D">
+  <link rel="alternate" hreflang="en" href="contact.html">
+  <link rel="alternate" hreflang="id" href="id/kontak.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PT Berkat Muri Sejahtera">
+  <meta property="og:title" content="Contact Us">
+  <meta property="og:description" content="Tell BMS what you need or what you have. The enquiry form opens WhatsApp with your details ready to send.">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/main.css?v=5102f47c">
+  <script>document.documentElement.className='js'</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hdr">
+    <div class="wrap bar">
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Menu</span>
+      </button>
+      <a class="brand" href="index.html" aria-label="PT Berkat Muri Sejahtera">
+        <span class="brand-mark" aria-hidden="true">BMS</span>
+        <span class="brand-name">Berkat Muri Sejahtera</span>
+      </a>
+      <div class="hdr-r">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="contact.html" hreflang="en" lang="en" aria-current="true">EN</a>
+          <a href="id/kontak.html" hreflang="id" lang="id">ID</a>
+        </div>
+        <a class="btn btn-gold btn-sm hdr-cta" href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <div class="scrim" data-menu-close></div>
+    <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="menu-top">
+        <button class="menu-btn menu-close" type="button" data-menu-close>
+          <span class="x" aria-hidden="true"></span>
+          <span>Close</span>
+        </button>
+      </div>
+      <nav aria-label="Primary">
+        <ul class="menu-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="products.html">Processed Products</a></li>
+          <li><a href="how-we-work.html">How We Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-foot">
+        <a class="btn btn-gold" href="https://wa.me/6281289090842" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+<section class="head head-maize">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h1>Tell us what you need, or what you have.</h1>
+    <p class="lead">One short form. It opens WhatsApp with your details ready to send to our team.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap form-grid">
+    <form id="inquiry" class="form" novalidate data-wa="6281289090842" data-lang="en">
+      <div class="seg-wrap field" id="role-wrap">
+        <fieldset>
+          <legend>I am a <span class="req" aria-hidden="true">*</span></legend>
+          <div class="seg">
+            <label><input type="radio" name="role" value="need" required><span class="seg-box"><b>BUYER</b></span></label>
+            <label class="have"><input type="radio" name="role" value="have"><span class="seg-box"><b>SELLER</b></span></label>
+          </div>
+        </fieldset>
+        <p class="err">Please choose buyer or seller.</p>
+      </div>
+
+      <div class="field">
+        <label class="l" for="material">Material <span class="req" aria-hidden="true">*</span></label>
+        <select id="material" name="material" required>
+          <option value="">Select a material</option>
+<option value="cocoa">Cocoa</option><option value="candlenuts">Candlenuts</option><option value="corn-cobs">Corn Cobs</option><option value="rubber-seeds">Rubber Seeds</option><option value="rubber-seed-oil">Rubber Seed Oil</option><option value="palm-based-derivatives">Palm-Based Derivatives</option><option value="cnsl">CNSL</option><option value="uco">UCO</option><option value="pome">POME</option><option value="petrochemicals">Petrochemicals</option>          <option value="other">Other / not listed</option>
+        </select>
+        <p class="err">Please select a material.</p>
+      </div>
+      <div class="field" id="other-wrap" hidden>
+        <label class="l" for="other">Which material?</label>
+        <input id="other" name="other" type="text" maxlength="80">
+      </div>
+
+      <div class="field">
+        <label class="l" for="qty" data-need="Quantity needed" data-have="Quantity available">Quantity <span class="opt">(optional)</span></label>
+        <div class="row-q">
+          <input id="qty" name="qty" type="number" min="0" step="any" inputmode="decimal" placeholder="20">
+          <select name="unit" aria-label="Unit">
+            <option value="ton">Tons</option><option value="kg">kg</option><option value="">To be discussed</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="l" for="location" data-need="Delivery location (city / port)" data-have="Where is the material? (city / province)">Location <span class="opt">(optional)</span></label>
+        <input id="location" name="location" type="text" maxlength="80" autocomplete="off">
+      </div>
+      <div class="field">
+        <label class="l" for="notes">Specifications or notes <span class="opt">(optional)</span></label>
+        <textarea id="notes" name="notes" rows="3" maxlength="600" placeholder="e.g. particle size, packing, timing"></textarea>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label class="l" for="name">Your name <span class="req" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required>
+          <p class="err">Please enter your name.</p>
+        </div>
+        <div class="field">
+          <label class="l" for="company">Company <span class="opt">(optional)</span></label>
+          <input id="company" name="company" type="text" autocomplete="organization" maxlength="80">
+        </div>
+      </div>
+      <div class="field">
+        <label class="l" for="phone">Your WhatsApp number <span class="req" aria-hidden="true">*</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="0812 3456 7890" required>
+        <p class="err">Please enter a valid phone number.</p>
+      </div>
+
+      <button class="btn btn-forest" type="submit">Send via WhatsApp</button>
+      <p class="hint">This opens WhatsApp with your message ready. Just tap send.</p>
+      <div class="sent" id="sent" role="status" aria-live="polite">
+        <p><b>WhatsApp should now be open.</b> Tap send there to reach our team.</p>
+        <p><a class="btn btn-gold btn-sm" id="sent-link" href="https://wa.me/6281289090842" target="_blank" rel="noopener">Not opened? Tap here</a></p>
+      </div>
+      <noscript><p class="hint">This form needs JavaScript. You can also message us directly on WhatsApp: <a href="https://wa.me/6281289090842">wa.me/6281289090842</a></p></noscript>
+    </form>
+
+    <aside class="info" aria-label="Company details">
+      <h2>PT Berkat Muri Sejahtera</h2>
+      <p>Jakarta, Indonesia</p>
+      <dl>
+        <div><dt>Kris Dwi Atmaja</dt><dd><a href="https://wa.me/6281289090842" target="_blank" rel="noopener">0812-8909-0842</a></dd></div>
+        <div><dt>Kristian Febrianta</dt><dd><a href="https://wa.me/6281788194848" target="_blank" rel="noopener">0817-8819-4848</a></dd></div>
+        <div><dt>NIB</dt><dd>0807240054536</dd></div>
+      </dl>
+      <a class="btn btn-maize" href="https://wa.me/6281289090842" target="_blank" rel="noopener">Prefer to chat? WhatsApp us</a>
+    </aside>
+  </div>
+</section>
+  </main>
+
+  <footer class="ftr">
+    <div class="wrap ftr-grid">
+      <div>
+        <strong class="ftr-name">PT Berkat Muri Sejahtera</strong>
+        <p>Jakarta, Indonesia &middot; NIB 0807240054536</p>
+      </div>
+      <ul class="ftr-contacts">
+        <li>Kris Dwi Atmaja &middot; <a href="https://wa.me/6281289090842" target="_blank" rel="noopener">0812-8909-0842</a></li>
+        <li>Kristian Febrianta &middot; <a href="https://wa.me/6281788194848" target="_blank" rel="noopener">0817-8819-4848</a></li>
+      </ul>
+      <p class="ftr-copy">&copy; 2026 PT Berkat Muri Sejahtera</p>
+    </div>
+    <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  </footer>
+
+  <script src="assets/js/main.js?v=b328a727" defer></script>
+</body>
+</html>

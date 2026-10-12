@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import cta with context %}
+{% block title %}{{ L('Processed Products', 'Produk Olahan') }}{% endblock %}
+{% block desc %}{{ L('Industries that may use the agricultural and bio-based materials BMS trades.', 'Industri yang dapat menggunakan material pertanian dan berbasis hayati yang diperdagangkan BMS.') }}{% endblock %}
+{% block main %}
+<section class="head head-moss">
+  <div class="wrap">
+    <p class="eyebrow">{{ L('Processed Products', 'Produk Olahan') }}</p>
+    <h1>{{ L('Processed Products', 'Produk Olahan') }}</h1>
+    <p class="lead">{{ L('Industries that may use the materials we trade.', 'Industri yang dapat menggunakan material yang kami perdagangkan.') }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>{{ L('Industries', 'Industri') }}</h2>
+    <div class="cols-2">
+      <article class="card"><h3>{{ L('Food & beverage', 'Makanan & minuman') }}</h3></article>
+      <article class="card"><h3>{{ L('Cosmetic & personal care', 'Kosmetik & perawatan diri') }}</h3></article>
+      <article class="card"><h3>{{ L('Energy & biofuel', 'Energi & biofuel') }}</h3></article>
+      <article class="card"><h3>{{ L('Chemicals & coatings', 'Kimia & pelapis') }}</h3></article>
+      <article class="card"><h3>{{ L('Industrial', 'Industri') }}</h3></article>
+    </div>
+    <p class="note">{{ L('Specifications are discussed per buyer requirement.', 'Spesifikasi dibahas sesuai kebutuhan pembeli.') }}</p>
+    <p><a class="btn btn-line btn-sm" href="{{ url('catalogue') }}">{{ L('See the catalogue', 'Lihat katalog') }} &rarr;</a></p>
+  </div>
+</section>
+
+{{ cta(L('Looking for a material?', 'Mencari material?'), L('Tell us what you need, or what you can supply.', 'Beri tahu kami apa yang Anda butuhkan, atau apa yang dapat Anda pasok.')) }}
+{% endblock %}

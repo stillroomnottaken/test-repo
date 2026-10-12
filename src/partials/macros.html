@@ -1,0 +1,35 @@
+{# BUY / SELL pair (catalogue + material pages). BUY = buyer, SELL = seller. Links carry ?intent=&material= into the contact form. #}
+{% macro pair(slug='', big=False) %}
+<div class="pair">
+  <a class="btn btn-forest btn-need{% if big %} btn-lg{% endif %}" href="{{ url('contact') }}?intent=need{% if slug %}&amp;material={{ slug }}{% endif %}" aria-label="{{ L('Buy (buyer)', 'Beli (pembeli)') }}">{{ L('BUY', 'BELI') }}</a>
+  <a class="btn btn-gold{% if big %} btn-lg{% endif %}" href="{{ url('contact') }}?intent=have{% if slug %}&amp;material={{ slug }}{% endif %}" aria-label="{{ L('Sell (seller)', 'Jual (penjual)') }}">{{ L('SELL', 'JUAL') }}</a>
+</div>
+{% endmacro %}
+
+{# Single general call to action. #}
+{% macro contact_btn(slug='', cls='btn-gold') %}
+<a class="btn {{ cls }}" href="{{ url('contact') }}{% if slug %}?material={{ slug }}{% endif %}">{{ L('CONTACT US', 'HUBUNGI KAMI') }}</a>
+{% endmacro %}
+
+{# Dark closing strip with one Contact us button. #}
+{% macro cta(heading, text, slug='') %}
+<section class="cta on-dark" aria-labelledby="cta-h">
+  <div class="wrap cta-in">
+    <div>
+      <h2 id="cta-h">{{ heading }}</h2>
+      <p>{{ text }}</p>
+    </div>
+    {{ contact_btn(slug, 'btn-maize btn-lg') }}
+  </div>
+</section>
+{% endmacro %}
+
+{% macro ribbon(color, href, tag, title, text) %}
+<a class="ribbon r-{{ color }}" href="{{ href }}">
+  <div class="wrap ribbon-in">
+    <span class="ribbon-tag">{{ tag }}</span>
+    <div><h2>{{ title }}</h2><p>{{ text }}</p></div>
+    <span class="ribbon-go" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+{% endmacro %}

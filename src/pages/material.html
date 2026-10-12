@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import pair, cta with context %}
+{% set name = m.name[lang] %}
+{% block title %}{{ name }}{% endblock %}
+{% block desc %}{% if m.slug == 'corn-cobs' %}{{ L('Corn cobs are one of the agricultural materials BMS trades, processed to your needs.', 'Tongkol jagung adalah salah satu material pertanian yang diperdagangkan BMS, diolah sesuai kebutuhan Anda.') }}{% else %}{{ name }}{% endif %}{% endblock %}
+{% block main %}
+<section class="head head-maize">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ url('home') }}">{{ L('Home', 'Beranda') }}</a> / <a href="{{ url('catalogue') }}">{{ L('Catalogue', 'Katalog') }}</a> / {{ name }}</nav>
+    <p class="eyebrow">{{ L('Agricultural commodities', 'Komoditas pertanian') }}</p>
+    <h1>{{ name }}</h1>
+    <p class="lead">{{ L('An agricultural material BMS can source and supply, processed to your needs.', 'Material pertanian yang dapat BMS carikan dan pasok, diolah sesuai kebutuhan Anda.') }}</p>
+    <div style="margin-top:20px;max-width:360px">{{ pair(m.slug) }}</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap about-grid">
+    <div>
+      <h2>{{ L('About corn cobs', 'Tentang tongkol jagung') }}</h2>
+      <p>{{ L("Corn cobs are one of the materials BMS trades. Specifications are discussed according to each buyer's requirements.", 'Tongkol jagung adalah salah satu material yang diperdagangkan BMS. Spesifikasi dibahas sesuai kebutuhan masing-masing pembeli.') }}</p>
+      <p class="eyebrow" style="margin-top:24px">{{ L('Potential uses', 'Potensi penggunaan') }}</p>
+      <ul class="chips"><li>{{ L('Cosmetics / personal care', 'Kosmetik / perawatan diri') }}</li><li>{{ L('Industrial applications', 'Aplikasi industri') }}</li></ul>
+      <p class="note">{{ L("Suitability is confirmed through the buyer's own testing.", 'Kesesuaian dikonfirmasi melalui pengujian pembeli sendiri.') }} <a href="{{ url('products') }}">{{ L('See processed products', 'Lihat produk olahan') }} &rarr;</a></p>
+    </div>
+    <dl class="facts">
+      <div><dt>{{ L('Sourcing', 'Pengadaan') }}</dt><dd>{{ L('Collectors, plantations and logistics partners', 'Pengepul, perkebunan, dan mitra logistik') }}</dd></div>
+      <div><dt>{{ L('Processing', 'Pengolahan') }}</dt><dd>{{ L('Processed to needs', 'Diolah sesuai kebutuhan') }}</dd></div>
+      <div><dt>{{ L('Packing & shipping', 'Kemasan & pengiriman') }}</dt><dd>{{ L('Considered as part of each enquiry', 'Dipertimbangkan dalam setiap permintaan') }}</dd></div>
+      <div><dt>{{ L('Volumes', 'Volume') }}</dt><dd class="soon">{{ L('Information coming soon', 'Informasi segera hadir') }}</dd></div>
+    </dl>
+  </div>
+</section>
+{{ cta(L('Interested in corn cobs?', 'Tertarik dengan tongkol jagung?'), L('Whether you have corn cobs to offer or a requirement to fulfil, BMS can help explore the connection.', 'Baik Anda memiliki tongkol jagung untuk ditawarkan maupun kebutuhan yang harus dipenuhi, BMS dapat membantu menjajaki koneksinya.'), m.slug) }}
+{% endblock %}

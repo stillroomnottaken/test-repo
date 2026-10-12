@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}{{ L('Contact Us', 'Hubungi Kami') }}{% endblock %}
+{% block desc %}{{ L('Tell BMS what you need or what you have. The enquiry form opens WhatsApp with your details ready to send.', 'Beri tahu BMS apa yang Anda butuhkan atau miliki. Formulir ini membuka WhatsApp dengan detail Anda siap dikirim.') }}{% endblock %}
+{% block main %}
+<section class="head head-maize">
+  <div class="wrap">
+    <p class="eyebrow">{{ L('Contact', 'Kontak') }}</p>
+    <h1>{{ L('Tell us what you need, or what you have.', 'Beri tahu kami apa yang Anda butuhkan, atau miliki.') }}</h1>
+    <p class="lead">{{ L('One short form. It opens WhatsApp with your details ready to send to our team.', 'Satu formulir singkat. Formulir ini membuka WhatsApp dengan detail Anda siap dikirim ke tim kami.') }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap form-grid">
+    <form id="inquiry" class="form" novalidate data-wa="{{ site.whatsapp }}" data-lang="{{ lang }}">
+      <div class="seg-wrap field" id="role-wrap">
+        <fieldset>
+          <legend>{{ L('I am a', 'Saya adalah') }} <span class="req" aria-hidden="true">*</span></legend>
+          <div class="seg">
+            <label><input type="radio" name="role" value="need" required><span class="seg-box"><b>{{ L('BUYER', 'PEMBELI') }}</b></span></label>
+            <label class="have"><input type="radio" name="role" value="have"><span class="seg-box"><b>{{ L('SELLER', 'PENJUAL') }}</b></span></label>
+          </div>
+        </fieldset>
+        <p class="err">{{ L('Please choose buyer or seller.', 'Pilih pembeli atau penjual.') }}</p>
+      </div>
+
+      <div class="field">
+        <label class="l" for="material">{{ L('Material', 'Material') }} <span class="req" aria-hidden="true">*</span></label>
+        <select id="material" name="material" required>
+          <option value="">{{ L('Select a material', 'Pilih material') }}</option>
+          {% for m in materials %}<option value="{{ m.slug }}">{{ m.name[lang] }}</option>{% endfor %}
+          <option value="other">{{ L('Other / not listed', 'Lainnya / tidak ada di daftar') }}</option>
+        </select>
+        <p class="err">{{ L('Please select a material.', 'Pilih material.') }}</p>
+      </div>
+      <div class="field" id="other-wrap" hidden>
+        <label class="l" for="other">{{ L('Which material?', 'Material apa?') }}</label>
+        <input id="other" name="other" type="text" maxlength="80">
+      </div>
+
+      <div class="field">
+        <label class="l" for="qty" data-need="{{ L('Quantity needed', 'Jumlah yang dibutuhkan') }}" data-have="{{ L('Quantity available', 'Jumlah yang tersedia') }}">{{ L('Quantity', 'Jumlah') }} <span class="opt">({{ L('optional', 'opsional') }})</span></label>
+        <div class="row-q">
+          <input id="qty" name="qty" type="number" min="0" step="any" inputmode="decimal" placeholder="20">
+          <select name="unit" aria-label="{{ L('Unit', 'Satuan') }}">
+            <option value="ton">{{ L('Tons', 'Ton') }}</option><option value="kg">kg</option><option value="">{{ L('To be discussed', 'Dibahas nanti') }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="l" for="location" data-need="{{ L('Delivery location (city / port)', 'Lokasi pengiriman (kota / pelabuhan)') }}" data-have="{{ L('Where is the material? (city / province)', 'Di mana material berada? (kota / provinsi)') }}">{{ L('Location', 'Lokasi') }} <span class="opt">({{ L('optional', 'opsional') }})</span></label>
+        <input id="location" name="location" type="text" maxlength="80" autocomplete="off">
+      </div>
+      <div class="field">
+        <label class="l" for="notes">{{ L('Specifications or notes', 'Spesifikasi atau catatan') }} <span class="opt">({{ L('optional', 'opsional') }})</span></label>
+        <textarea id="notes" name="notes" rows="3" maxlength="600" placeholder="{{ L('e.g. particle size, packing, timing', 'mis. ukuran partikel, kemasan, waktu') }}"></textarea>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label class="l" for="name">{{ L('Your name', 'Nama Anda') }} <span class="req" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required>
+          <p class="err">{{ L('Please enter your name.', 'Masukkan nama Anda.') }}</p>
+        </div>
+        <div class="field">
+          <label class="l" for="company">{{ L('Company', 'Perusahaan') }} <span class="opt">({{ L('optional', 'opsional') }})</span></label>
+          <input id="company" name="company" type="text" autocomplete="organization" maxlength="80">
+        </div>
+      </div>
+      <div class="field">
+        <label class="l" for="phone">{{ L('Your WhatsApp number', 'Nomor WhatsApp Anda') }} <span class="req" aria-hidden="true">*</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="0812 3456 7890" required>
+        <p class="err">{{ L('Please enter a valid phone number.', 'Masukkan nomor telepon yang valid.') }}</p>
+      </div>
+
+      <button class="btn btn-forest" type="submit">{{ L('Send via WhatsApp', 'Kirim lewat WhatsApp') }}</button>
+      <p class="hint">{{ L('This opens WhatsApp with your message ready. Just tap send.', 'Ini membuka WhatsApp dengan pesan Anda siap kirim. Tinggal tekan kirim.') }}</p>
+      <div class="sent" id="sent" role="status" aria-live="polite">
+        <p><b>{{ L('WhatsApp should now be open.', 'WhatsApp seharusnya sudah terbuka.') }}</b> {{ L('Tap send there to reach our team.', 'Tekan kirim di sana untuk menghubungi tim kami.') }}</p>
+        <p><a class="btn btn-gold btn-sm" id="sent-link" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{{ L('Not opened? Tap here', 'Belum terbuka? Tekan di sini') }}</a></p>
+      </div>
+      <noscript><p class="hint">{{ L('This form needs JavaScript. You can also message us directly on WhatsApp:', 'Formulir ini membutuhkan JavaScript. Anda juga dapat mengirim pesan langsung lewat WhatsApp:') }} <a href="https://wa.me/{{ site.whatsapp }}">wa.me/{{ site.whatsapp }}</a></p></noscript>
+    </form>
+
+    <aside class="info" aria-label="{{ L('Company details', 'Detail perusahaan') }}">
+      <h2>{{ site.name }}</h2>
+      <p>Jakarta, Indonesia</p>
+      <dl>
+        {% for c in site.contacts %}
+        <div><dt>{{ c.name }}</dt><dd><a href="https://wa.me/{{ c.e164 }}" target="_blank" rel="noopener">{{ c.display }}</a></dd></div>
+        {% endfor %}
+        <div><dt>NIB</dt><dd>{{ site.nib }}</dd></div>
+      </dl>
+      <a class="btn btn-maize" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{{ L('Prefer to chat? WhatsApp us', 'Lebih suka chat? WhatsApp kami') }}</a>
+    </aside>
+  </div>
+</section>
+{% endblock %}

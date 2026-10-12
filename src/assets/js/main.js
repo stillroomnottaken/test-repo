@@ -1,0 +1,146 @@
+/* BMS site script — no dependencies. Three jobs: slide-in menu, catalogue filter, inquiry form -> WhatsApp. */
+(function () {
+  'use strict';
+
+  /* ---------- 1. Slide-in menu ---------- */
+  var openBtn = document.querySelector('.menu-btn[aria-controls="menu"]');
+  var menu = document.getElementById('menu');
+  if (openBtn && menu) {
+    var closeBtn = menu.querySelector('.menu-close');
+    var setOpen = function (open) {
+      document.body.classList.toggle('menu-open', open);
+      openBtn.setAttribute('aria-expanded', String(open));
+      (open ? closeBtn : openBtn).focus();
+    };
+    openBtn.addEventListener('click', function () { setOpen(true); });
+    document.querySelectorAll('[data-menu-close]').forEach(function (el) {
+      el.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!document.body.classList.contains('menu-open')) { return; }
+      if (e.key === 'Escape') { setOpen(false); return; }
+      if (e.key === 'Tab') {                       // keep focus inside the open menu
+        var f = menu.querySelectorAll('a[href],button');
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+
+  /* ---------- 2. Catalogue filter ---------- */
+  var filters = document.querySelectorAll('[data-filter]');
+  var cards = document.querySelectorAll('.mat[data-cat]');
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      filters.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      cards.forEach(function (c) { c.hidden = !(f === 'all' || c.getAttribute('data-cat') === f); });
+    });
+  });
+
+  /* ---------- 3. Inquiry form -> WhatsApp ---------- */
+  var form = document.getElementById('inquiry');
+  if (!form) { return; }
+
+  var TXT = {
+    en: { head: 'New enquiry', need: 'BUYER', have: 'SELLER', material: 'Material', qty: 'Quantity',
+          loc: 'Location', notes: 'Notes', name: 'Name', company: 'Company', phone: 'WhatsApp', foot: 'Sent from the BMS website', tbd: 'unit to be discussed' },
+    id: { head: 'Permintaan baru', need: 'PEMBELI', have: 'PENJUAL', material: 'Material', qty: 'Jumlah',
+          loc: 'Lokasi', notes: 'Catatan', name: 'Nama', company: 'Perusahaan', phone: 'WhatsApp', foot: 'Dikirim dari situs BMS', tbd: 'satuan dibahas nanti' }
+  };
+  var T = TXT[form.getAttribute('data-lang')] || TXT.en;
+  var WA = form.getAttribute('data-wa');
+  var el = function (n) { return form.elements[n]; };
+  var role = function () { var r = form.querySelector('input[name=role]:checked'); return r ? r.value : ''; };
+
+  // Labels that change with the role (buyer vs seller)
+  var swap = function () {
+    var r = role() || 'need';
+    form.querySelectorAll('label[data-need]').forEach(function (l) {
+      l.firstChild.nodeValue = l.getAttribute('data-' + r) + ' ';
+    });
+  };
+  form.querySelectorAll('input[name=role]').forEach(function (r) {
+    r.addEventListener('change', function () { document.getElementById('role-wrap').classList.remove('invalid'); swap(); });
+  });
+
+  // "Other / not listed" reveals a free-text field
+  var otherWrap = document.getElementById('other-wrap');
+  var toggleOther = function () { otherWrap.hidden = el('material').value !== 'other'; };
+  el('material').addEventListener('change', toggleOther);
+
+  // Prefill from catalogue buttons: contact.html?intent=need|have&material=corn-cobs
+  var qs = new URLSearchParams(window.location.search);
+  var intent = qs.get('intent');
+  if (intent === 'need' || intent === 'have') {
+    var radio = form.querySelector('input[name=role][value=' + intent + ']');
+    if (radio) { radio.checked = true; }
+  }
+  var mat = qs.get('material');
+  if (mat && form.querySelector('#material option[value="' + mat.replace(/[^\w-]/g, '') + '"]')) {
+    el('material').value = mat.replace(/[^\w-]/g, '');
+  }
+  toggleOther();
+  swap();
+
+  // Phone: Indonesian local (08…) or international -> digits for wa.me
+  var normPhone = function (raw) {
+    var plus = raw.trim().charAt(0) === '+';
+    var d = raw.replace(/\D/g, '');
+    if (!plus) {
+      if (d.indexOf('00') === 0) { d = d.slice(2); }
+      else if (d.charAt(0) === '0') { d = '62' + d.slice(1); }
+      else if (d.charAt(0) === '8') { d = '62' + d; }
+    }
+    return d;
+  };
+
+  var mark = function (field, bad) { field.setAttribute('aria-invalid', bad ? 'true' : 'false'); return bad; };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = false, first = null;
+    var flag = function (field, isBad) { if (mark(field, isBad) && !first) { first = field; } bad = bad || isBad; };
+
+    var roleWrap = document.getElementById('role-wrap');
+    roleWrap.classList.toggle('invalid', !role());
+    if (!role()) { bad = true; first = form.querySelector('input[name=role]'); }
+    flag(el('material'), !el('material').value);
+    flag(el('name'), !el('name').value.trim());
+    var phone = normPhone(el('phone').value);
+    flag(el('phone'), phone.length < 9 || phone.length > 15);
+    if (bad) { first.focus(); return; }
+
+    var sel = el('material');
+    var matName = sel.value === 'other' ? (el('other').value.trim() || sel.options[sel.selectedIndex].text) : sel.options[sel.selectedIndex].text;
+    var unit = el('unit');
+    var qty = el('qty').value.trim();
+    var qtyLine = qty ? qty + ' ' + (unit.value ? unit.options[unit.selectedIndex].text : '(' + T.tbd + ')') : '';
+    var lines = [
+      '*' + T.head + ' · ' + (role() === 'need' ? T.need : T.have) + '*',
+      T.material + ': ' + matName,
+      qtyLine ? T.qty + ': ' + qtyLine : false,
+      el('location').value.trim() ? T.loc + ': ' + el('location').value.trim() : false,
+      el('notes').value.trim() ? T.notes + ': ' + el('notes').value.trim() : false,
+      '',
+      T.name + ': ' + el('name').value.trim(),
+      el('company').value.trim() ? T.company + ': ' + el('company').value.trim() : false,
+      T.phone + ': +' + phone,
+      '',
+      '_' + T.foot + '_'
+    ].filter(function (l) { return l !== false; });
+
+    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n'));
+    var sent = document.getElementById('sent');
+    document.getElementById('sent-link').href = url;
+    sent.classList.add('show');
+    sent.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    window.open(url, '_blank', 'noopener');   // 'noopener' makes the return value useless, so the fallback link above always shows
+  });
+
+  // Clear an error as soon as the visitor fixes the field
+  form.addEventListener('input', function (e) {
+    if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') { e.target.setAttribute('aria-invalid', 'false'); }
+  });
+})();

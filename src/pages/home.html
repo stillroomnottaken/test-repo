@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import cta, ribbon, contact_btn with context %}
+{% block title %}{{ site.name }} ({{ site.short }}) | {{ L('Your Trading Hub for Agricultural Commodities', 'Pusat Perdagangan Komoditas Pertanian Anda') }}{% endblock %}
+{% block desc %}{{ L('Jakarta-based Indonesian trading company connecting farmers, suppliers, processors and buyers. Agricultural commodities, bio-based and industrial materials.', 'Perusahaan perdagangan Indonesia berbasis Jakarta yang menghubungkan petani, pemasok, pengolah, dan pembeli. Komoditas pertanian, bahan berbasis hayati, dan material industri.') }}{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","alternateName":"{{ site.short }}","foundingDate":"2025","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"},"identifier":"NIB {{ site.nib }}"}</script>
+{% endblock %}
+{% block main %}
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">{{ site.name }} &middot; Jakarta, Indonesia</p>
+      <h1 id="h1">{{ L('Your trading hub for agricultural commodities', 'Pusat perdagangan komoditas pertanian Anda') }}</h1>
+      <p class="lead">{{ L('BMS connects farmers, suppliers, processors and buyers across Indonesia. Whatever you grow, collect or need, tell us and we find the match.', 'BMS menghubungkan petani, pemasok, pengolah, dan pembeli di seluruh Indonesia. Apa pun yang Anda tanam, kumpulkan, atau butuhkan, beri tahu kami dan kami carikan pasangannya.') }}</p>
+      <div class="actions">
+        {{ contact_btn('', 'btn-gold btn-lg') }}
+      </div>
+    </div>
+    <svg class="net" viewBox="0 0 440 330" aria-hidden="true" focusable="false">
+      <g class="ln-g">
+        <path class="ln" d="M59 60 C140 60 140 165 182 165"/><path class="ln" d="M59 130 C140 130 140 165 182 165"/>
+        <path class="ln" d="M59 200 C140 200 140 165 182 165"/><path class="ln" d="M59 270 C140 270 140 165 182 165"/>
+        <path class="ln" d="M258 165 C300 165 300 60 381 60"/><path class="ln" d="M258 165 C300 165 300 130 381 130"/>
+        <path class="ln" d="M258 165 C300 165 300 200 381 200"/><path class="ln" d="M258 165 C300 165 300 270 381 270"/>
+      </g>
+      <circle class="src" cx="50" cy="60" r="9"/><circle class="src" cx="50" cy="130" r="9"/><circle class="src" cx="50" cy="200" r="9"/><circle class="src" cx="50" cy="270" r="9"/>
+      <circle class="dst" cx="390" cy="60" r="9"/><circle class="dst" cx="390" cy="130" r="9"/><circle class="dst" cx="390" cy="200" r="9"/><circle class="dst" cx="390" cy="270" r="9"/>
+      <circle class="core" cx="220" cy="165" r="40"/>
+      <text class="core-t" x="220" y="171" text-anchor="middle">BMS</text>
+      <text x="50" y="315" text-anchor="middle">{{ L('Sources', 'Sumber') }}</text>
+      <text x="390" y="315" text-anchor="middle">{{ L('Buyers', 'Pembeli') }}</text>
+    </svg>
+  </div>
+</section>
+
+<div class="ribbons">
+  {{ ribbon('maize', url('catalogue'), L('Catalogue', 'Katalog'), L('%d materials, one network' % materials|length, '%d material, satu jaringan' % materials|length), L('Agricultural commodities, bio-based materials and industrial resources.', 'Komoditas pertanian, bahan berbasis hayati, dan sumber daya industri.')) }}
+  {{ ribbon('gold', url('contact') ~ '?intent=have', L('For farmers & suppliers', 'Untuk petani & pemasok'), L('Have a harvest or stock to sell?', 'Punya hasil panen atau stok untuk dijual?'), L('Tell us what you have and we connect you with buyers.', 'Beri tahu kami apa yang Anda miliki, kami hubungkan dengan pembeli.')) }}
+  {{ ribbon('moss', url('contact') ~ '?intent=need', L('For buyers', 'Untuk pembeli'), L('Looking for a material?', 'Mencari material?'), L('Tell us what you need and we source it for you.', 'Beri tahu kami kebutuhan Anda, kami carikan pasokannya.')) }}
+  {{ ribbon('noir', url('process'), L('How We Work', 'Cara Kerja'), L('One network, many opportunities', 'Satu jaringan, banyak peluang'), L('From resource sources to business opportunities.', 'Dari sumber daya hingga peluang bisnis.')) }}
+</div>
+
+{{ cta(L("What's moving through your network?", 'Apa yang bergerak di jaringan Anda?'), L('Whether you have resources to offer or a material requirement to fulfil, BMS can help explore the connection.', 'Baik Anda memiliki sumber daya untuk ditawarkan maupun kebutuhan material yang harus dipenuhi, BMS dapat membantu menjajaki koneksinya.')) }}
+{% endblock %}
